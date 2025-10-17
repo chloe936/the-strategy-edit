@@ -173,6 +173,7 @@ function Wedges() {
   );
 }
 
+// put near the top of the file (after imports)
 type CTA = { label: string; href: string };
 
 type WedgeCardProps = {
@@ -184,8 +185,15 @@ type WedgeCardProps = {
   ctas: CTA[];
 };
 
-
-function WedgeCard({ icon, title, lead, body, funnels, ctas }) {
+// update the component signature
+function WedgeCard({
+  icon,
+  title,
+  lead,
+  body,
+  funnels,
+  ctas,
+}: WedgeCardProps) {
   return (
     <Card className="border-zinc-200 bg-white">
       <CardHeader className="flex flex-row items-center gap-3">
@@ -198,14 +206,17 @@ function WedgeCard({ icon, title, lead, body, funnels, ctas }) {
       <CardContent className="space-y-4">
         <p className="text-sm text-zinc-700">{body}</p>
         <div className="flex flex-wrap gap-2">
-          {funnels.map((f) => (
-            <span key={f} className="inline-flex items-center gap-1 rounded-full bg-zinc-50 border px-3 py-1 text-xs text-zinc-700">
+          {funnels.map((f: string) => (
+            <span
+              key={f}
+              className="inline-flex items-center gap-1 rounded-full bg-zinc-50 border px-3 py-1 text-xs text-zinc-700"
+            >
               <Sparkles className="h-3.5 w-3.5" /> {f}
             </span>
           ))}
         </div>
         <div className="flex flex-wrap gap-2 pt-2">
-          {ctas.map((c) => (
+          {ctas.map((c: CTA) => (
             <a key={c.label} href={c.href}>
               <Button className="rounded-2xl" variant="secondary">
                 {c.label} <ArrowRight className="h-4 w-4 ml-1" />
