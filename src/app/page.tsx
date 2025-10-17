@@ -184,10 +184,6 @@ type WedgeCardProps = {
   ctas: CTA[];
 };
 
-function WedgeCard({ icon, title, lead, body, funnels, ctas }: WedgeCardProps) {
-  ...
-}
-
 
 function WedgeCard({ icon, title, lead, body, funnels, ctas }) {
   return (
