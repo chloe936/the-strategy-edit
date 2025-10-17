@@ -172,6 +172,8 @@ function Wedges() {
     </section>
   );
 }
+type Capsule = { id: number; title: string; summary: string; tags: string[] };
+
 
 // put near the top of the file (after imports)
 type CTA = { label: string; href: string };
@@ -288,38 +290,51 @@ function Capsules() {
   );
 }
 
-const sampleCapsules = [
+const sampleCapsules: Capsule[] = [
   {
     id: 1,
     title: "Geny beauty tech growth system",
-    summary: "Beauty tech assistant shaping client communications and pipeline.",
+    summary: "Beauty tech assistant shaping client communications and pipeline...",
     tags: ["Beauty", "Tech"],
   },
   {
     id: 2,
     title: "NHS service discovery",
-    summary: "Translated complex patient journeys into clear opportunities aligned to GDS standards.",
+    summary: "Translated complex patient journeys into clear opportunities...",
     tags: ["Government", "Tech"],
   },
   {
     id: 3,
     title: "Solana experience pop up",
-    summary: "Curated an institutional meets culture activation with wayfinding, signage and speaker flow.",
+    summary: "Curated an institutional meets culture activation with wayfinding...",
     tags: ["Tech", "Entertainment"],
   },
   {
     id: 4,
     title: "Fintech founder funnel",
-    summary: "Mentored GTM and narrative; created lightweight measurement loops for early traction.",
+    summary: "Mentored GTM and narrative; created lightweight measurement loops...",
     tags: ["Finance", "B2B"],
+  },
+  {
+    id: 5,
+    title: "Akuna TV audience insight",
+    summary: "Qual and quant study informed partnership roadmap.",
+    tags: ["Entertainment", "Tech"],
+  },
+  {
+    id: 6,
+    title: "Gov digital consent patterns",
+    summary: "Mapped data consent behaviours; recommended privacy aware patterns.",
+    tags: ["Government", "B2B"],
   },
 ];
 
-function matchQuery(c, q) {
+function matchQuery(c: Capsule, q: string): boolean {
   if (!q) return true;
   const s = (c.title + " " + c.summary + " " + c.tags.join(" ")).toLowerCase();
   return s.includes(q.toLowerCase());
 }
+
 
 const sampleInsights = [
   {
