@@ -173,6 +173,22 @@ function Wedges() {
   );
 }
 
+type CTA = { label: string; href: string };
+
+type WedgeCardProps = {
+  icon: React.ReactNode;
+  title: string;
+  lead: string;
+  body: string;
+  funnels: string[];
+  ctas: CTA[];
+};
+
+function WedgeCard({ icon, title, lead, body, funnels, ctas }: WedgeCardProps) {
+  ...
+}
+
+
 function WedgeCard({ icon, title, lead, body, funnels, ctas }) {
   return (
     <Card className="border-zinc-200 bg-white">

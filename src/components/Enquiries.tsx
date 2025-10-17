@@ -16,12 +16,20 @@ export default function Enquiries() {
   const [ask, setAsk] = useState("");
 
   const handleSubmit = () => {
-    const body = `Name: ${name}\nContact: ${email}\nCompany/Stage: ${company}\nAsk: ${ask}`;
-    const href = `mailto:${EMAIL_TO}?subject=${encodeURIComponent(
-      EMAIL_SUBJECT
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = href;
-  };
+  const enc = encodeURIComponent;
+  const body = `Name: ${name}\nContact: ${email}\nCompany/Stage: ${company}\nAsk: ${ask}`;
+  const gmailUrl =
+    `https://mail.google.com/mail/?view=cm&fs=1` +
+    `&to=${EMAIL_TO}` +
+    `&su=${enc(EMAIL_SUBJECT)}` +
+    `&body=${enc(body)}`;
+
+  // Try Gmail in a new tab. If blocked, fall back to mailto:
+  const win = window.open(gmailUrl, "_blank", "noopener,noreferrer");
+  if (!win) {
+    window.location.href = `mailto:${EMAIL_TO}?subject=${enc(EMAIL_SUBJECT)}&body=${enc(body)}`;
+  }
+};
 
   return (
     <section id="contact" className="space-y-6">
